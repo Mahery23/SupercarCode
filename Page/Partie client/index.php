@@ -79,6 +79,7 @@ if (isset($_SESSION['nom_utilisateur'])) {
             position: relative;
             height: 100vh;
             overflow: hidden;
+            margin-bottom: 4rem;
         }
 
         .main video {
@@ -101,14 +102,15 @@ if (isset($_SESSION['nom_utilisateur'])) {
 
         /* Section des marques */
         .marques-section {
-            padding: 4rem 0;
+            padding: 6rem 0;
             background: white;
+            margin-bottom: 4rem;
         }
 
         .marque-card {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
+            padding: 3rem;
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -140,9 +142,10 @@ if (isset($_SESSION['nom_utilisateur'])) {
         /* Sections voitures */
         .voitures-section {
             position: relative;
-            padding: 4rem 0;
+            padding: 6rem 0;
             background: #f8f9fa;
             width: 100%;
+            margin-bottom: 4rem;
         }
 
         .voitures-section .container {
@@ -167,7 +170,7 @@ if (isset($_SESSION['nom_utilisateur'])) {
         .footer {
             background: var(--secondary-color);
             color: white;
-            padding: 4rem 0 2rem;
+            padding: 6rem 0 2rem;
         }
 
         .footer h3 {
@@ -196,7 +199,7 @@ if (isset($_SESSION['nom_utilisateur'])) {
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 2rem;
+            margin-top: 4rem;
             padding-top: 2rem;
         }
 
@@ -218,6 +221,7 @@ if (isset($_SESSION['nom_utilisateur'])) {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             height: 100%;
+            margin-bottom: 2rem;
         }
 
         .voiture-card:hover {
@@ -237,7 +241,7 @@ if (isset($_SESSION['nom_utilisateur'])) {
         }
 
         .voiture-content {
-            padding: 20px;
+            padding: 2rem;
             text-align: center;
         }
 
@@ -329,6 +333,21 @@ if (isset($_SESSION['nom_utilisateur'])) {
         .btn:active {
             transform: translateY(1px);
             box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .qsn-section {
+            padding: 6rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .qsn-card {
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-section {
+            padding: 6rem 0;
+            margin-bottom: 4rem;
         }
     </style>
 </head>
