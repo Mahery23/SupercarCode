@@ -69,19 +69,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['message_erreur'] = "Vous avez déjà une demande en attente ou confirmée pour ce modèle à cette date. Veuillez choisir une autre date ou un autre modèle.";
             } else {
                 // Vérification de la disponibilité
-                $verifier_disponibilite = "SELECT COUNT(*) as nb_demandes 
-                                          FROM demande_essai 
-                                          WHERE nom_modele = ? 
-                                          AND date_demande = ? 
-                                          AND heure_arriver = ? 
-                                          AND (etat = 'en attente' OR etat = 'confirmé')";
+                $verifier_disponibilite = "CALL VerifierDisponibiliteVoiture(?, ?, ?, @disponible)";
                 $stmt = $connexion->prepare($verifier_disponibilite);
                 $stmt->bind_param("sss", $nom_modele, $date_demande, $heure_arriver);
                 $stmt->execute();
-                $result = $stmt->get_result();
+                $stmt->close();  // Important : fermer le premier statement
+                
+                // Récupérer le résultat
+                $result = $connexion->query("SELECT @disponible as disponible");
                 $row = $result->fetch_assoc();
                 
-                if ($row['nb_demandes'] > 0) {
+                if ($row['disponible'] == 0) {  // Vérification explicite de la valeur 0
                     $_SESSION['message_erreur'] = "Désolé, la voiture n'est pas disponible à cette date et heure. Une autre demande est déjà en attente ou confirmée.";
                     header("Location: ../demande_essai.php");
                     exit();
